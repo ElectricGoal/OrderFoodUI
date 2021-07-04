@@ -1,6 +1,6 @@
 # OrderFoodUI
 ## Demo  
-<img src="https://github.com/ElectricGoal/OrderFoodUI/blob/main/img/orderfood.png" width=40% height=40%>    
+<img src="https://github.com/ElectricGoal/OrderFoodUI/blob/main/img/orderfood.png">    
 
 ## Reference
 
