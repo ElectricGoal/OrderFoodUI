@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:foodorder/Screen/breakpoint.dart';
 
+// ignore: must_be_immutable
 class FoodBar extends StatelessWidget {
-  const FoodBar({Key? key}) : super(key: key);
+  FoodBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double scale = screenWidth / (screenWidth >= 925 ? kScreenWidth : kSmallScreenWidth);
     return Container(
       padding: EdgeInsets.only(top: 20),
       child: Column(
@@ -13,12 +17,13 @@ class FoodBar extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
-                margin: EdgeInsets.only(left: 20),
+                margin: EdgeInsets.only(left: 20 * scale),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       "ElectricGoal\'s BBQ Team",
+                      textScaleFactor: scale,
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 33,
@@ -28,6 +33,7 @@ class FoodBar extends StatelessWidget {
                     ),
                     Text(
                       "Location ID# ABC123",
+                      textScaleFactor: scale,
                       style: TextStyle(
                         fontSize: 17,
                         color: Colors.black38,
@@ -44,6 +50,7 @@ class FoodBar extends StatelessWidget {
                       children: [
                         Text(
                           "Last sync",
+                          textScaleFactor: scale,
                           style: TextStyle(color: Colors.black26),
                         ),
                         Row(
@@ -51,26 +58,29 @@ class FoodBar extends StatelessWidget {
                             Icon(
                               Icons.circle_rounded,
                               color: Colors.green,
-                              size: 10,
+                              size: 10 * scale,
                             ),
                             SizedBox(
-                              width: 10,
+                              width: 10 * scale,
                             ),
-                            Text("3 mins ago")
+                            Text(
+                              "3 mins ago",
+                              textScaleFactor: scale,
+                            )
                           ],
                         ),
                       ],
                     ),
                   ),
                   SizedBox(
-                    width: 20,
+                    width: 20 * scale,
                   ),
                   Container(
-                      margin: EdgeInsets.only(right: 20),
-                      padding: EdgeInsets.all(12),
+                      margin: EdgeInsets.only(right: 20 * scale),
+                      padding: EdgeInsets.all(12 * scale),
                       decoration: BoxDecoration(
                         color: Colors.black12,
-                        borderRadius: BorderRadius.circular(13),
+                        borderRadius: BorderRadius.circular(13 * scale),
                       ),
                       child: Row(
                         children: [
@@ -78,10 +88,11 @@ class FoodBar extends StatelessWidget {
                             Icons.help_outline_rounded,
                             color: Colors.black,
                           ),
-                          SizedBox(
-                            width: 10,
+                          SizedBox(width: 10 * scale),
+                          Text(
+                            "Help",
+                            textScaleFactor: scale,
                           ),
-                          Text("Help"),
                         ],
                       )),
                 ],

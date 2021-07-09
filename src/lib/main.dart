@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:foodorder/Screen/home_view.dart';
 
-import 'Screen/home_screen.dart';
+import 'Screen/large_home_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.white,
       ),
-      home: HomeScreen(),
+      home: HomeView(),
     );
   }
 }

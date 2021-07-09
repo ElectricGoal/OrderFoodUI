@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:foodorder/Screen/breakpoint.dart';
 import 'package:foodorder/Widget/border_gradient.dart';
 
 class CustomerInfo extends StatefulWidget {
@@ -17,9 +18,12 @@ class _CustomerInfoState extends State<CustomerInfo> {
   int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double scale = screenWidth / (screenWidth >= 925 ? kScreenWidth : kSmallScreenWidth);
     return Container(
       //margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      padding: EdgeInsets.only(right: 30, left: 20, top: 20),
+      padding:
+          EdgeInsets.only(right: 20 * scale, left: 20 * scale, top: 20 * scale),
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(20),
@@ -42,6 +46,7 @@ class _CustomerInfoState extends State<CustomerInfo> {
                   flex: 1,
                   child: Text(
                     "WRISTBAND INFORMATION",
+                    textScaleFactor: scale,
                     style: TextStyle(
                         color: Colors.black,
                         fontSize: 10,
@@ -49,7 +54,7 @@ class _CustomerInfoState extends State<CustomerInfo> {
                   ),
                 ),
                 SizedBox(
-                  height: 6,
+                  height: 6 * scale,
                 ),
                 Flexible(
                   flex: 3,
@@ -57,13 +62,12 @@ class _CustomerInfoState extends State<CustomerInfo> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(right: 15),
+                        padding: EdgeInsets.only(right: 15 * scale),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(10),
                           child: Image.asset(
                             "asset/image/oto.jpg",
-                            height: 50,
-                            width: 50,
+                            scale: scale,
                           ),
                         ),
                       ),
@@ -75,17 +79,18 @@ class _CustomerInfoState extends State<CustomerInfo> {
                           children: [
                             Text(
                               "Oto Ai",
+                              textScaleFactor: scale,
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 17,
                                   color: Colors.black),
                             ),
                             SizedBox(
-                              height: 7,
+                              height: 7 * scale,
                             ),
                             Container(
                               padding: EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 9),
+                                  horizontal: 10 * scale, vertical: 9 * scale),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(20),
                                   gradient: LinearGradient(
@@ -97,6 +102,7 @@ class _CustomerInfoState extends State<CustomerInfo> {
                                       ])),
                               child: Text(
                                 "VIP TICKET HOLDER",
+                                textScaleFactor: scale,
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
@@ -110,13 +116,14 @@ class _CustomerInfoState extends State<CustomerInfo> {
                       Flexible(
                         flex: 1,
                         child: Container(
-                          padding: EdgeInsets.all(20),
+                          padding: EdgeInsets.all(20 * scale),
                           decoration: BoxDecoration(
                             color: Colors.pinkAccent,
                             borderRadius: BorderRadius.circular(13),
                           ),
                           child: Text(
                             "Unlink",
+                            textScaleFactor: scale,
                             style: TextStyle(color: Colors.white, fontSize: 10),
                           ),
                         ),
@@ -137,13 +144,14 @@ class _CustomerInfoState extends State<CustomerInfo> {
           Flexible(
             flex: 3,
             child: Container(
-              padding: EdgeInsets.only(left: 20),
+              padding: EdgeInsets.only(left: 20 * scale),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Flexible(
                     flex: 1,
                     child: RichText(
+                      textScaleFactor: scale,
                       text: TextSpan(children: [
                         TextSpan(
                           text: "SELECT AVAILABLE PROMO TO APPLY",
@@ -163,7 +171,7 @@ class _CustomerInfoState extends State<CustomerInfo> {
                     ),
                   ),
                   SizedBox(
-                    height: 6,
+                    height: 6 * scale,
                   ),
                   Flexible(
                       flex: 3,
@@ -178,11 +186,11 @@ class _CustomerInfoState extends State<CustomerInfo> {
                                 });
                               },
                               child: Padding(
-                                  padding:
-                                      EdgeInsets.only(right: 28, bottom: 5),
+                                  padding: EdgeInsets.only(
+                                      right: 28 * scale, bottom: 5 * scale),
                                   child: selectedIndex != index
                                       ? Container(
-                                          padding: EdgeInsets.all(20),
+                                          padding: EdgeInsets.all(20 * scale),
                                           decoration: BoxDecoration(
                                             color: Colors.black12,
                                             borderRadius:
@@ -190,6 +198,7 @@ class _CustomerInfoState extends State<CustomerInfo> {
                                           ),
                                           child: Text(
                                             promo[index],
+                                            textScaleFactor: scale,
                                             style: TextStyle(
                                                 color: Colors.black,
                                                 fontSize: 13,
@@ -199,12 +208,14 @@ class _CustomerInfoState extends State<CustomerInfo> {
                                       : Container(
                                           decoration: kGradientBoxDecoration,
                                           child: Padding(
-                                            padding: EdgeInsets.all(2),
+                                            padding: EdgeInsets.all(2 * scale),
                                             child: Container(
                                               decoration: kInnerDecoration,
-                                              padding: EdgeInsets.all(16),
+                                              padding:
+                                                  EdgeInsets.all(16 * scale),
                                               child: Text(
                                                 promo[index],
+                                                textScaleFactor: scale,
                                                 style: TextStyle(
                                                     color: Colors.black,
                                                     fontSize: 13,
@@ -225,5 +236,3 @@ class _CustomerInfoState extends State<CustomerInfo> {
     );
   }
 }
-
-

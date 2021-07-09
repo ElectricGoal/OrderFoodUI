@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodorder/Screen/breakpoint.dart';
 
 class CategoryFood extends StatefulWidget {
   @override
@@ -18,8 +19,10 @@ class _CategoryFoodState extends State<CategoryFood> {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double scale = screenWidth / (screenWidth >= 925 ? kScreenWidth : kSmallScreenWidth);
     return Container(
-      height: 80,
+      height: 80 * scale,
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: categories.length,
@@ -31,23 +34,26 @@ class _CategoryFoodState extends State<CategoryFood> {
                 });
               },
               child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: 20 * scale, vertical: 20 * scale),
                   child: selectedIndex == index
                       ? Container(
-                          padding: EdgeInsets.all(10),
+                          padding: EdgeInsets.all(10 * scale),
                           decoration: BoxDecoration(
                             color: Colors.orange[800],
-                            borderRadius: BorderRadius.circular(30),
+                            borderRadius: BorderRadius.circular(30 * scale),
                           ),
                           child: Text(
                             categories[index],
+                            textScaleFactor: scale,
                             style: TextStyle(color: Colors.white, fontSize: 15),
                           ),
                         )
                       : Container(
-                          padding: EdgeInsets.all(10),
+                          padding: EdgeInsets.all(10 * scale),
                           child: Text(
                             categories[index],
+                            textScaleFactor: scale,
                             style: TextStyle(color: Colors.black, fontSize: 15),
                           ),
                         )),

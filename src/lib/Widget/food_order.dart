@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodorder/Screen/breakpoint.dart';
 import 'package:foodorder/model/food_data.dart';
 
 class FoodOrder extends StatelessWidget {
@@ -6,28 +7,34 @@ class FoodOrder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double scale = screenWidth / kScreenWidth;
     return ListView.builder(
         itemCount: foodorder.length,
         itemBuilder: (BuildContext context, int index) {
           return Container(
-            padding: EdgeInsets.symmetric(vertical: 10),
+            padding: EdgeInsets.symmetric(vertical: 10 * scale),
             child: Row(
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(14),
-                  child: Image.asset(
-                    foodorder[index].imageUrl,
-                    height: 40,
-                    width: 40,
+                  child: FittedBox(
+                    child: Image.asset(
+                      foodorder[index].imageUrl,
+                      scale: scale,
+                      height: 40,
+                      width: 40,
+                    ),
                   ),
                 ),
                 SizedBox(
-                  width: 10,
+                  width: 10 * scale,
                 ),
                 Expanded(
                     flex: 3,
                     child: Text(
                       foodorder[index].name,
+                      textScaleFactor: scale,
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 14,
@@ -38,20 +45,24 @@ class FoodOrder extends StatelessWidget {
                   child: Row(
                     children: [
                       Container(
-                        padding: EdgeInsets.all(10),
+                        padding: EdgeInsets.all(10 * scale),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           color: Colors.black12,
                         ),
-                        child: Icon(
-                          Icons.remove,
-                          color: Colors.black,
+                        child: FittedBox(
+                          child: Icon(
+                            Icons.remove,
+                            color: Colors.black,
+                            size: 20 * scale,
+                          ),
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        padding: EdgeInsets.symmetric(horizontal: 16 * scale),
                         child: Text(
                           foodorder[index].count.toString(),
+                          textScaleFactor: scale,
                           style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
@@ -59,14 +70,17 @@ class FoodOrder extends StatelessWidget {
                         ),
                       ),
                       Container(
-                        padding: EdgeInsets.all(10),
+                        padding: EdgeInsets.all(10 * scale),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           color: Colors.black12,
                         ),
-                        child: Icon(
-                          Icons.add,
-                          color: Colors.black,
+                        child: FittedBox(
+                          child: Icon(
+                            Icons.add,
+                            color: Colors.black,
+                            size: 20 * scale,
+                          ),
                         ),
                       )
                     ],
@@ -78,6 +92,7 @@ class FoodOrder extends StatelessWidget {
                     alignment: Alignment.centerRight,
                     child: Text(
                       "\$" + (foodorder[index].cost * foodorder[index].count).toString(),
+                      textScaleFactor: scale,
                       style: TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.bold,
