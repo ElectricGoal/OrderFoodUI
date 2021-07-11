@@ -1,6 +1,6 @@
 # OrderFoodUI
 ## Demo  
-<img src="https://github.com/ElectricGoal/OrderFoodUI/blob/main/img/orderfood.png">    
+<img src="https://github.com/ElectricGoal/OrderFoodUI/blob/main/img/img.png">    
 
 ## Reference
 
