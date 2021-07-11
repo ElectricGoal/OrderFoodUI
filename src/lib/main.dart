@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foodorder/Screen/home_view.dart';
 
-import 'Screen/large_home_screen.dart';
 
 void main() {
   runApp(MyApp());

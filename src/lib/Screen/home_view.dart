@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:foodorder/Screen/size_config.dart';
 import 'package:foodorder/Screen/large_home_screen.dart';
 import 'package:foodorder/Screen/small_home_screen.dart';
+//import 'package:sized_context/sized_context.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -9,15 +11,44 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: LayoutBuilder(
-        builder: (context, constrains) {
-          print(constrains.maxWidth);
-          if (constrains.maxWidth < 925) {
-            return SmallHomeScreen();
+        builder: (context, constraints) {
+          double screenWidth = constraints.maxWidth;
+          double scale = screenWidth /
+              (screenWidth >= 925 ? kScreenWidth : kSmallScreenWidth);
+          if (constraints.maxWidth < kSmallScreenWidth) {
+            return MyInheritedWidget(
+              child: SmallHomeScreen(),
+              scale: scale,
+            );
           } else {
-            return LargeHomeScreen();
+            return MyInheritedWidget(
+              child: LargeHomeScreen(),
+              scale: scale,
+            );
           }
         },
       ),
     );
+  }
+}
+
+class MyInheritedWidget extends InheritedWidget {
+  MyInheritedWidget({
+    Key? key,
+    required this.child,
+    required this.scale,
+  }) : super(key: key, child: child);
+
+  final Widget child;
+
+  final double scale;
+
+  static MyInheritedWidget? of(BuildContext context) {
+    return context.dependOnInheritedWidgetOfExactType<MyInheritedWidget>();
+  }
+
+  @override
+  bool updateShouldNotify(MyInheritedWidget oldWidget) {
+    return true;
   }
 }
