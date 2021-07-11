@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:foodorder/Screen/size_config.dart';
-import 'package:foodorder/Screen/large_home_screen.dart';
-import 'package:foodorder/Screen/small_home_screen.dart';
+import 'package:foodorder/screen/large_home_screen.dart';
+import 'package:foodorder/screen/small_home_screen.dart';
+import 'package:foodorder/screen/size_config.dart';
 //import 'package:sized_context/sized_context.dart';
 
 class HomeView extends StatelessWidget {
@@ -14,7 +14,7 @@ class HomeView extends StatelessWidget {
         builder: (context, constraints) {
           double screenWidth = constraints.maxWidth;
           double scale = screenWidth /
-              (screenWidth >= 925 ? kScreenWidth : kSmallScreenWidth);
+              (screenWidth >= kSmallScreenWidth ? kScreenWidth : kSmallScreenWidth);
           if (constraints.maxWidth < kSmallScreenWidth) {
             return MyInheritedWidget(
               child: SmallHomeScreen(),

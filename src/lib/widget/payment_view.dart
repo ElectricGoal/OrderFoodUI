@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:foodorder/Screen/home_view.dart';
-import 'package:foodorder/Widget/payment_view_components.dart';
+import 'package:foodorder/screen/home_view.dart';
+import 'package:foodorder/widget/payment_view_components.dart';
 
 class PayView extends StatelessWidget {
   @override

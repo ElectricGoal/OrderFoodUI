@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:foodorder/Screen/home_view.dart';
+import 'package:foodorder/screen/home_view.dart';
 import 'package:foodorder/model/food_data.dart';
 import 'package:foodorder/widget/food_order_components.dart';
 

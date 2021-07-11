@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:foodorder/Widget/border_gradient.dart';
+import 'package:foodorder/widget/border_gradient.dart';
 
 class WristbandInfo extends StatelessWidget {
   const WristbandInfo({
